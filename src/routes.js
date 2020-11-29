@@ -8,5 +8,8 @@ routes.get('/', (req, res)=> {
 })
 
 routes.post('/user', UserController.create);
+routes.delete('/user/:id', UserController.deleteById);
+routes.put('/user/:id', UserController.updateById);
+routes.get('/users', UserController.listUsers);
 
 module.exports = routes;
