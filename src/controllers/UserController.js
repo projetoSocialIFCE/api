@@ -4,10 +4,13 @@ const User = require('../models/User');
 module.exports = {
   async create(request, response){
     //coloque os parametros recebidos no corpo da requisição
-    const {name} = request.body;
+    const {name, email, password, phone} = request.body;
     try{
       const user = await User.create({
         name: name,
+        email: email,
+        password: password,
+        phone: phone
       });
 
       return response.status(200).json(user);
