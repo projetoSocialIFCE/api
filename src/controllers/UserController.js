@@ -13,7 +13,7 @@ module.exports = {
         phone: phone
       });
 
-      return response.status(200).json(user);
+      return response.status(201).json(user);
     }catch(err){
       return response.status(400).send({msg: 'Erro create user'});
     }
