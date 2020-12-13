@@ -1,4 +1,6 @@
 const express = require('express');
+const multer = require('multer');
+const multerConfig = require("./config/multer");
 const routes = express.Router();
 
 const UserController = require('./controllers/UserController');
@@ -16,11 +18,17 @@ routes.delete('/user/:id', UserController.deleteById);
 routes.put('/user/:id', UserController.updateById);
 routes.get('/users', UserController.listUsers);
 
-routes.post('/post', PostController.create);
+routes.post('/post', multer(multerConfig).single('file'), PostController.create);
+routes.get('/posts', PostController.index);
+routes.delete('/post/:id', PostController.deleteById);
 
 routes.post('/faq', FaqController.create);
+routes.get('/faqs', FaqController.index);
+routes.delete('/faq/:id', FaqController.deleteById);
 
 routes.post('/postInstagram', PostInstagramController.create);
+routes.get('/postInstagram', PostInstagramController.index);
+routes.delete('/postInstagram/:id', PostInstagramController.deleteById);
 
 routes.post('slide', SlideController.create)
 
