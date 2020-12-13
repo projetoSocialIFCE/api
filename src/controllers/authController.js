@@ -90,7 +90,7 @@ module.exports = {
           if(err){
             return response.status(400).send({error: 'Cannot send forgot password email.'});
           }
-          return response.send();
+          return response.status(200).json(token);
         })
 
      }catch(err){
