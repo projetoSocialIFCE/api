@@ -7,14 +7,14 @@ const routes = require('./routes');
 
 const app = express();
 app.use(cors({
-	origin: 'http://localhost:3000'
+	origin: '*'
 }));
 
 app.use(bodyParser.json());
 
 
 app.use((_, res, next) => {
-	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+	res.setHeader('Access-Control-Allow-Origin', '*');
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
 	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
 	res.setHeader('Access-Control-Allow-Credentials', true);
