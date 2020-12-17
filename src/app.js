@@ -6,15 +6,21 @@ const cors = require('cors');
 const routes = require('./routes');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+	origin: '*'
+}));
+
 app.use(bodyParser.json());
 
-var corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 200,
-};
 
-app.use(cors(corsOptions));
+app.use((_, res, next) => {
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+	res.setHeader('Access-Control-Allow-Credentials', true);
+
+	next();
+});
 
 // Use esse trecho de codigo para conexão com o mongodb
 mongoose.connect(
