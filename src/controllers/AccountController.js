@@ -2,10 +2,10 @@ const Account = require('../models/Account');
 
 module.exports = {
   async create(request, response){
-    const {name, account, agencia, value} = request.body;
+    const {bank, account, agencia, value} = request.body;
     try{
       const accountNew = await Account.create({
-        name: name,
+        bank: bank,
         account: account,
         agencia: agencia,
         value: value
