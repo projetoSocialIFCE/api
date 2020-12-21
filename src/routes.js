@@ -8,6 +8,7 @@ const PostController = require('./controllers/PostController');
 const FaqController = require('./controllers/FaqController');
 const PostInstagramController = require('./controllers/PostInstagramController');
 const SlideController = require('./controllers/SlideController');
+const AccountController = require('./controllers/AccountController');
 const authController = require('./controllers/authController');
 const authMiddleware = require('../src/middlewares/auth');
 
@@ -37,6 +38,11 @@ routes.post('/auth', authController.authenticate);
 routes.post('/forgot_password', authController.forgot_password);
 routes.post('/reset_password', authController.reset_password);
 
-routes.post('slide', SlideController.create)
+routes.post('slide', SlideController.create);
+
+routes.post('/account', AccountController.create);
+routes.post('/value/:id', AccountController.updateAccount);
+routes.get('/accounts', AccountController.index);
+routes.delete('/account/:id', AccountController.deleteById);
 
 module.exports = routes;

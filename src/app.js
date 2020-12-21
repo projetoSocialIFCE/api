@@ -14,6 +14,7 @@ app.use(cors({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(routes);
 
 app.use((_, res, next) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');
@@ -32,6 +33,6 @@ mongoose.connect(
 });
 
 
-app.use(routes);
+
 
 module.exports = app;
