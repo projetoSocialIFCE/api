@@ -41,7 +41,7 @@ routes.post('/reset_password', authController.reset_password);
 routes.post('slide', SlideController.create);
 
 routes.post('/account', AccountController.create);
-routes.post('/value/:id', AccountController.updateAccount);
+routes.put('/value/:id', AccountController.updateAccount);
 routes.get('/accounts', AccountController.index);
 routes.delete('/account/:id', AccountController.deleteById);
 
