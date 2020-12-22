@@ -7,6 +7,7 @@ const UserController = require('./controllers/UserController');
 const PostController = require('./controllers/PostController');
 const FaqController = require('./controllers/FaqController');
 const PostInstagramController = require('./controllers/PostInstagramController');
+const PostParceiroController = require('./controllers/PostParceiroController')
 const SlideController = require('./controllers/SlideController');
 const AccountController = require('./controllers/AccountController');
 const authController = require('./controllers/authController');
@@ -24,6 +25,10 @@ routes.get('/users', UserController.listUsers);
 routes.post('/post', authMiddleware, multer(multerConfig).single('file'), PostController.create);
 routes.get('/posts', PostController.index);
 routes.delete('/post/:id', PostController.deleteById);
+
+routes.post('/postParceiro', authMiddleware, multer(multerConfig).single('file'), PostController.create);
+routes.get('/postsParceiro', PostController.index);
+routes.delete('/postParceiro/:id', PostController.deleteById);
 
 routes.post('/faq', FaqController.create);
 routes.get('/faqs', FaqController.index);
