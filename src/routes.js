@@ -26,9 +26,9 @@ routes.post('/post', authMiddleware, multer(multerConfig).single('file'), PostCo
 routes.get('/posts', PostController.index);
 routes.delete('/post/:id', PostController.deleteById);
 
-routes.post('/postParceiro', authMiddleware, multer(multerConfig).single('file'), PostController.create);
-routes.get('/postsParceiro', PostController.index);
-routes.delete('/postParceiro/:id', PostController.deleteById);
+routes.post('/postParceiro', authMiddleware, multer(multerConfig).single('file'), PostParceiroController.create);
+routes.get('/postsParceiro', PostParceiroController.index);
+routes.delete('/postParceiro/:id', PostParceiroController.deleteById);
 
 routes.post('/faq', FaqController.create);
 routes.get('/faqs', FaqController.index);
