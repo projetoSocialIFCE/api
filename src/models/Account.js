@@ -17,6 +17,10 @@ const AccountSchema = mongoose.Schema({
     type: Number,
     required: false
   },
+   total: {
+    type: Number,
+    required: false
+  },
   createdAt: {
     type: Date,
     default: Date.now()

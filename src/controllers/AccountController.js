@@ -16,6 +16,18 @@ module.exports = {
       return response.status(400).send({msg: 'Erro create account'});
     }
   },
+  async createTotal(request, response){
+    const {total} = request.body;
+    try{
+      const accountNew = await Account.create({
+       total: total
+      });
+
+      return response.status(201).json(accountNew);
+    }catch(err){
+      return response.status(400).send({msg: 'Erro create account'});
+    }
+  },
   async index (request, response){
     try{
       const accounts =  await Account.find();
