@@ -49,7 +49,7 @@ module.exports = {
 
       await Account.findByIdAndUpdate(id, account);
      
-      return response.json(v);
+      return response.status(201).json(account);
     }catch(err){
       console.log(err)
       return response.status(400).send({error: 'Error loading Post.'})
