@@ -1,4 +1,4 @@
-const Post = require('../models/Post');
+const PostParceiro = require('../models/PostParceiro');
 
 module.exports = {
   async create(request, response){
@@ -6,38 +6,38 @@ module.exports = {
       const {location: img_url = ''} = request.file;
       const {title} = request.body;
 
-      const post = await Post.create({
+      const postParceiro = await PostParceiro.create({
         img_url,
        title,
        
       
       });
 
-      return response.status(200).json(post);
+      return response.status(200).json(postParceiro);
     }catch(err){
-      return response.status(400).send({msg: 'Error creating new post'});
+      return response.status(400).send({msg: 'Error creating new postParceiro'});
     }
   },
 
   async index (request, response){
     try{
-      const posts =  await Post.find();
+      const postParceiros =  await PostParceiro.find();
      
-      return response.json(posts);
+      return response.json(postParceiros);
     }catch(err){
       console.log(err)
-      return response.status(400).send({error: 'Error loading Posts.'})
+      return response.status(400).send({error: 'Error loading PostParceiros.'})
     }
   },
   async deleteById (request, response){
     const {id} = request.params;
     try{
-      const post = await Post.findById(id);
-      await post.deleteOne();
+      const postParceiro = await PostParceiro.findById(id);
+      await postParceiro.deleteOne();
       
       return response.send();
     }catch(err){
-      return response.status(400).send({error: 'Error deleting post.'})
+      return response.status(400).send({error: 'Error deleting postParceiro.'})
     }
   },
 }
